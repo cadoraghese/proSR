@@ -1,3 +1,5 @@
+Davide Spinelli edit for the ADL course
+
 # ProSR
 
 ## A Fully Progressive Approach to Single-Image Super-Resolution
