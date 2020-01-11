@@ -37,7 +37,19 @@ if __name__ == '__main__':
     # Parse command-line arguments
     args = parse_args()
 
-    img = Image.open(args.input)
-    img_scaled = downscale_by_ratio(img, args.ratio)
+    import os
+    isFile = os.path.isfile(args.input)
+    isDirectory = os.path.isdir(args.input)
 
-    img_scaled.save(args.output)
+    if isFile:
+        img = Image.open(args.input)
+        img_scaled = downscale_by_ratio(img, args.ratio)
+
+        img_scaled.save(args.output)
+
+    if isDirectory:
+        for file in os.listdir(args.input):
+            img = Image.open(args.input + file)
+            img_scaled = downscale_by_ratio(img, args.ratio)
+
+            img_scaled.save(args.output + file)
