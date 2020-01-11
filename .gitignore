@@ -1,2 +1,6 @@
 *.pyc
 .idea/
+proSR.pth
+output/
+data/datasets/
+data/checkpoints/
