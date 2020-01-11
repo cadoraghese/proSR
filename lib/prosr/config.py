@@ -29,7 +29,7 @@ prosr_params = \
                 'stddev': [0.0039215, 0.0039215, 0.0039215]  # multiply the image value by this factor, resulting value range of image [-127.5, 127.5]
             },
             'epochs': 500,  #
-            'batch_size': 8,
+            'batch_size': 16,
             'growing_steps': [0.12, 0.25, 0.45, 0.6, 1.00],
             'lr_schedule_patience': 30,
             'lr': 0.0001,
