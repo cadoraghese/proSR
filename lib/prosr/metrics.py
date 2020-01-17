@@ -1,7 +1,7 @@
 from prosr.utils.misc import crop_boundaries, mod_crop
 from skimage import img_as_float
 from skimage.color import rgb2ycbcr
-from skimage.metrics import peak_signal_noise_ratio, structural_similarity
+from skimage.measure import compare_psnr, compare_ssim
 
 import numpy as np
 
@@ -26,8 +26,8 @@ def eval_psnr_and_ssim(im1, im2, scale):
         im1_t = crop_boundaries(im1_t, int(scale) + 6)
         im2_t = crop_boundaries(im2_t, int(scale) + 6)
 
-    psnr_val = peak_signal_noise_ratio(im1_t, im2_t)
-    ssim_val = structural_similarity(
+    psnr_val = compare_psnr(im1_t, im2_t)
+    ssim_val = compare_ssim(
         im1_t,
         im2_t,
         win_size=11,
