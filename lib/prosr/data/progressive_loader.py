@@ -139,7 +139,7 @@ class DataLoader(multiproc.MyDataLoader):
             self.dataset,
             batch_size=batch_size,
             shuffle=(self.phase == Phase.TRAIN),
-            num_workers=8,
+            num_workers=16,
             random_vars=copy.deepcopy(dataset.scale) if self.phase == Phase.TRAIN else None,
             drop_last=True,
             sampler=None)
