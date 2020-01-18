@@ -4,3 +4,4 @@ proSR.pth
 output/
 data/datasets/
 data/checkpoints/
+aws_commands.txt
