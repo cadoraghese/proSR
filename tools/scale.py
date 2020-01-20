@@ -57,6 +57,9 @@ if __name__ == '__main__':
     isFile = os.path.isfile(args.input)
     isDirectory = os.path.isdir(args.input)
 
+    if not os.path.exists(args.output):
+        os.system('mkdir ' + args.output)
+
     if isFile:
         img = Image.open(args.input)
         if args.ratio:
