@@ -21,14 +21,14 @@ prosr_params = \
             'dataset': {
                 'path': {
                     'source':'',
-                    'target':'data/datasets/DIV2K/DIV2K_train_HR'
+                    'target':'data/datasets/DIV2K/DIV2K_train_reduced_512'
                     # 'target':'data/datasets/Ensemble/**'
                 },
                 'downscale':False,
                 'mean': [0.4488, 0.4371, 0.4040],  # mean value to extract from the (0, 1) image values
                 'stddev': [0.0039215, 0.0039215, 0.0039215]  # multiply the image value by this factor, resulting value range of image [-127.5, 127.5]
             },
-            'epochs': 1,  #
+            'epochs': 50,  #
             'batch_size': 16,
             'growing_steps': [0.12, 0.25, 0.45, 0.6, 1.00],
             'lr_schedule_patience': 30,
@@ -38,9 +38,9 @@ prosr_params = \
             'l1_loss_weight': 1.0,
             ############# output settings ##############
             'io': {
-                'save_model_freq':20,
+                'save_model_freq':12,
                 'eval_epoch_freq': 10,
-                'print_errors_freq': 100
+                'print_errors_freq': 50
             },
         },
         'G': {
@@ -74,8 +74,10 @@ prosr_params = \
             },
         },
         'data': {
-            'scale': [2, 4, 8],
-            'input_size': [48, 36, 24]  # reduce input size for 4x and 8x to save memory
+            # 'scale': [2, 4, 8],
+            # 'input_size': [48, 36, 24]  # reduce input size for 4x and 8x to save memory
+            'scale': [4],
+            'input_size': [36]  # reduce input size for 4x and 8x to save memory
         }
     })
 prosrs_params = copy.deepcopy(prosr_params)
