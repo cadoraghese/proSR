@@ -1,5 +1,5 @@
 from argparse import ArgumentParser
-from math import floor
+from math import floor, ceil
 from PIL import Image
 
 
@@ -20,7 +20,7 @@ def downscale_by_size(img, size, method=Image.BICUBIC):
     w, h = img.size
     max_dim = max(w, h)
     factor = max_dim / size
-    w, h = floor(w / factor), floor(h / factor)
+    w, h = ceil(w / factor), ceil(h / factor)
     return img.resize((w, h), method)
 
 
