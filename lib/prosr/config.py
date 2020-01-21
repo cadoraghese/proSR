@@ -38,9 +38,9 @@ prosr_params = \
             'l1_loss_weight': 1.0,
             ############# output settings ##############
             'io': {
-                'save_model_freq':12,
+                'save_model_freq':20,
                 'eval_epoch_freq': 10,
-                'print_errors_freq': 100
+                'print_errors_freq': 20
             },
         },
         'G': {
