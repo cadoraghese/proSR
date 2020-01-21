@@ -21,7 +21,7 @@ prosr_params = \
             'dataset': {
                 'path': {
                     'source':'',
-                    'target':'data/datasets/DIV2K/DIV2K_train_reduced_512'
+                    'target':'data/datasets/DIV2K/DIV2K_train_minimal_512'
                     # 'target':'data/datasets/Ensemble/**'
                 },
                 'downscale':False,
