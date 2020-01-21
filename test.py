@@ -156,7 +156,6 @@ if __name__ == '__main__':
             toc = time.time()
             if 'target' in data:
                 hr_img = tensor2im(data['target'], mean, stddev)
-                print(sr_img.shape, hr_img.shape)
                 psnr_val, ssim_val = eval_psnr_and_ssim(
                     sr_img, hr_img, args.scale)
                 print_evaluation(
