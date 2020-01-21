@@ -40,7 +40,7 @@ prosr_params = \
             'io': {
                 'save_model_freq':12,
                 'eval_epoch_freq': 10,
-                'print_errors_freq': 50
+                'print_errors_freq': 100
             },
         },
         'G': {
