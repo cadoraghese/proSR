@@ -20,7 +20,7 @@ def downscale_by_size(img, size, method=Image.BICUBIC):
     w, h = img.size
     max_dim = max(w, h)
     factor = max_dim / size
-    w, h = round(w / factor), round(h / factor)
+    w, h = floor(w / factor), floor(h / factor)
     return img.resize((w, h), method)
 
 
