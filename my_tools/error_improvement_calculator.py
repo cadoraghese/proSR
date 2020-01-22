@@ -17,10 +17,10 @@ def moving_average(rewards, T):
     return rewards
 
 
-f = open("error_overfit_500.txt", "r")
+f = open("error_test_2.txt", "r")
 data = []
 for line in f:
     data += [float(line.split(' ')[7])]
 
-plt.plot(data)
+plt.plot(moving_average(data, len(data)))
 plt.show()
