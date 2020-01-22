@@ -50,10 +50,7 @@ def parse_args():
     return args
 
 
-if __name__ == '__main__':
-
-    # Parse command-line arguments
-    args = parse_args()
+def main(args):
 
     import os
     isFile = os.path.isfile(args.input)
@@ -80,3 +77,9 @@ if __name__ == '__main__':
                 img_scaled = downscale_by_size(img, args.max_size)
 
             img_scaled.save(args.output + file)
+
+
+if __name__ == '__main__':
+    # Parse command-line arguments
+    args = parse_args()
+    main(args)
