@@ -20,8 +20,8 @@ prosr_params = \
         'train': {
             'dataset': {
                 'path': {
-                    'source':'data/datasets/open_image/faces_400_64',
-                    'target':'data/datasets/open_image/faces_400_512'
+                    'source':'data/datasets/open_image/general_400_64',
+                    'target':'data/datasets/open_image/general_400_256'
                     # 'target':'data/datasets/Ensemble/**'
                 },
                 'downscale':False,
@@ -76,8 +76,8 @@ prosr_params = \
         'data': {
             # 'scale': [2, 4, 8],
             # 'input_size': [48, 36, 24]  # reduce input size for 4x and 8x to save memory
-            'scale': [8],
-            'input_size': [24]  # reduce input size for 4x and 8x to save memory
+            'scale': [4],
+            'input_size': [36]  # reduce input size for 4x and 8x to save memory
         }
     })
 prosrs_params = copy.deepcopy(prosr_params)
