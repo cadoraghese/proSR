@@ -56,6 +56,9 @@ def random_crop_pairs(crop_size, scale, hr, lr):
     y0 = 0
     y1 = imh_lr - oh_lr + 1
 
+    if x1<=x0:
+    	print(hr)
+
     offy_lr = random.randint(y0, y1)
     offx_lr = random.randint(x0, x1)
     offy_hr, offx_hr = int(offy_lr * scale), int(offx_lr * scale)
