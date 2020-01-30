@@ -56,7 +56,7 @@ def main(args):
     isFile = os.path.isfile(args.input)
     isDirectory = os.path.isdir(args.input)
 
-    if not os.path.exists(args.output):
+    if isDirectory and not os.path.exists(args.output):
         os.system('mkdir ' + args.output)
 
     if isFile:
