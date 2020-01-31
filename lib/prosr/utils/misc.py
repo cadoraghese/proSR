@@ -149,7 +149,7 @@ def print_evaluation(filename, psnr, ssim, iid=None, n_images=None,time=None):
 
     if time is not None:
         msg += ' | {:.2f} secs'.format(time)
-    info(msg)
+    print(msg)
 
 
 def set_seed(seed):
