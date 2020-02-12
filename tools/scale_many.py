@@ -1,4 +1,4 @@
-from tools import scale
+from tools import scale         # remove 'from tools' on the gcloud version
 import os
 from argparse import ArgumentParser
 from argparse import Namespace
@@ -27,6 +27,7 @@ print(folder_list)
 # folder_list = ['general_1000_HR', 'faces_1000_HR']
 for folder in folder_list:
     for size in [16, 32, 64, 128, 256, 512]:
+        print('scale {} to {}px'.format(folder, size))
         args = Namespace(input=path + folder + os.sep, output=path + folder.split('HR')[0] + str(size) + os.sep,
                          max_size=size, ratio=None)
         scale.main(args)
