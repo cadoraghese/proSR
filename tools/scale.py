@@ -17,7 +17,7 @@ def downscale_by_ratio(img, ratio, method=Image.BICUBIC, magic_crop=False):
 
 def downscale_by_size(img, size, method=Image.BICUBIC):
 
-    min = 64
+    min = 16
     magic = size // min
     w, h = img.size
     max_dim = max(w, h)
