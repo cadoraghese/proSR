@@ -5,13 +5,5 @@ output/
 data/datasets/
 data/checkpoints/
 aws_commands.txt
-/my_tools/faces.txt
-/my_tools/box-position.txt
-/my_tools/class-descriptions-boxable.txt
-/my_tools/faces_old.txt
-/my_tools/id-rotation.txt
-/my_tools/instructions.txt
-/my_tools/rotations.txt
-/my_tools/rotations_old.txt
-/my_tools/rotations_old_sorted.txt
+my_tools/open_image_files/*
 my_tools/things_to_do.txt
