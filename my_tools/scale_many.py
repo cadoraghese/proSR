@@ -10,7 +10,7 @@ for folder in folder_list:
         tmp += [folder]
 folder_list = tmp
 print(folder_list)
-folder_list = ['general_1000_HR', 'faces_1000_HR']
+#folder_list = ['general_1000_HR', 'faces_1000_HR']
 for folder in folder_list:
     for size in [16,32,64,128,256,512]:
         args = Namespace(input=path + folder + '\\', output=path + folder.split('HR')[0] + str(size) + '\\', max_size=size, ratio=None)
