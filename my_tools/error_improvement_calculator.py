@@ -17,10 +17,17 @@ def moving_average(rewards, T):
     return rewards
 
 
-f = open("error_test_2.txt", "r")
-data = []
-for line in f:
-    data += [float(line.split(' ')[7])]
+f = open("errors_files/gen_8x_32_256.txt", "r")
+data_array = [[], [], []]
 
-plt.plot(moving_average(data, len(data)))
+for line in f:
+    if len(line.split(' ')) >= 7 and float(line.split(' ')[7]) != 0.0:
+        data_array[0] += [float(line.split(' ')[7])]
+    if len(line.split(' ')) >= 9 and float(line.split(' ')[9]) != 0.0:
+        data_array[1] += [float(line.split(' ')[9])]
+    if len(line.split(' ')) >= 11 and float(line.split(' ')[11]) != 0.0:
+        data_array[2] += [float(line.split(' ')[11])]
+
+for data in data_array:
+    plt.plot(moving_average(data, len(data)))
 plt.show()
