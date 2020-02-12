@@ -1,4 +1,4 @@
-import tools.scale as scale
+from tools import scale
 import os
 from argparse import ArgumentParser
 from argparse import Namespace
@@ -18,6 +18,7 @@ args = parse_args()
 path = args.input
 folder_list = os.listdir(path)
 tmp = []
+print(folder_list)
 for folder in folder_list:
     if folder.split('_')[2] == 'HR':
         tmp += [folder]
