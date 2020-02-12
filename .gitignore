@@ -5,5 +5,5 @@ output/
 data/datasets/
 data/checkpoints/
 aws_commands.txt
-my_tools/open_image_files/*
-my_tools/things_to_do.txt
+tools/open_image_files/*
+tools/things_to_do.txt
