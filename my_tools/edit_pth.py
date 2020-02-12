@@ -26,6 +26,6 @@ if __name__ == '__main__':
     params_dict['params'].train.io.save_model_freq = 5
     params_dict['params'].train.io.eval_epoch_freq = 1
     params_dict['params'].train.io.print_errors_freq = 40
-    params_dict['params'].data.scale = [2, 4, 8]
-    params_dict['params'].data.input_size = [48, 36, 24]
+    params_dict['params'].data.scale = [8]
+    params_dict['params'].data.input_size = [24]
     torch.save(params_dict, args.output)
