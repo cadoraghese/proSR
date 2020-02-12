@@ -20,7 +20,7 @@ prosr_params = \
         'train': {
             'dataset': {
                 'path': {
-                    'source':'data/datasets/open_image/general_400_64',
+                    'source':'data/datasets/open_image/general_400_32',
                     'target':'data/datasets/open_image/general_400_256'
                     # 'target':'data/datasets/Ensemble/**'
                 },
@@ -28,19 +28,19 @@ prosr_params = \
                 'mean': [0.4488, 0.4371, 0.4040],  # mean value to extract from the (0, 1) image values
                 'stddev': [0.0039215, 0.0039215, 0.0039215]  # multiply the image value by this factor, resulting value range of image [-127.5, 127.5]
             },
-            'epochs': 250,  #
+            'epochs': 25,  #
             'batch_size': 16,
             'growing_steps': [0.12, 0.25, 0.45, 0.6, 1.00],
-            'lr_schedule_patience': 15,
+            'lr_schedule_patience': 2,  # default: 30
             'lr': 0.0001,
             'lr_decay': 0.5,
             'smallest_lr': 1e-5,
             'l1_loss_weight': 1.0,
             ############# output settings ##############
             'io': {
-                'save_model_freq':50,
-                'eval_epoch_freq': 10,
-                'print_errors_freq': 400
+                'save_model_freq':5,
+                'eval_epoch_freq': 1,
+                'print_errors_freq': 40
             },
         },
         'G': {
@@ -74,10 +74,8 @@ prosr_params = \
             },
         },
         'data': {
-            # 'scale': [2, 4, 8],
-            # 'input_size': [48, 36, 24]  # reduce input size for 4x and 8x to save memory
-            'scale': [4],
-            'input_size': [36]  # reduce input size for 4x and 8x to save memory
+            'scale': [2, 4, 8], # needed for curriculum learning
+            'input_size': [48, 36, 24]  # reduce input size for 4x and 8x to save memory
         }
     })
 prosrs_params = copy.deepcopy(prosr_params)
