@@ -1,8 +1,21 @@
 import tools.scale as scale
 import os
+from argparse import ArgumentParser
 from argparse import Namespace
 
-path = 'D:\\Documents\\Workspace\\ADL_proSR\\data\\datasets\\open_image\\'
+
+def parse_args():
+    parser = ArgumentParser(description='Downscale many')
+    parser.add_argument('-i', '--input', help='Input')
+
+    args_in = parser.parse_args()
+
+    return args_in
+
+
+args = parse_args()
+
+path = args.input
 folder_list = os.listdir(path)
 tmp = []
 for folder in folder_list:
@@ -10,8 +23,9 @@ for folder in folder_list:
         tmp += [folder]
 folder_list = tmp
 print(folder_list)
-#folder_list = ['general_1000_HR', 'faces_1000_HR']
+# folder_list = ['general_1000_HR', 'faces_1000_HR']
 for folder in folder_list:
-    for size in [16,32,64,128,256,512]:
-        args = Namespace(input=path + folder + '\\', output=path + folder.split('HR')[0] + str(size) + '\\', max_size=size, ratio=None)
+    for size in [16, 32, 64, 128, 256, 512]:
+        args = Namespace(input=path + folder + os.sep, output=path + folder.split('HR')[0] + str(size) + os.sep,
+                         max_size=size, ratio=None)
         scale.main(args)
