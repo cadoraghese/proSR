@@ -6,19 +6,23 @@ def moving_average(rewards, T):
     array = np.zeros(T)
     window = 5
     for x in range(0, T):
-        tmp = 0
-        for y in range(x-window, x+window+1):
-            if y < 0 or y >= T:
-                tmp = tmp + rewards[x]
+        sum = 0
+        tmp_window = window
+        y = x - tmp_window
+        null_window = 0
+        while y <= x + tmp_window:
+            if y < 0:
+                tmp_window -= 1
+            elif y >= T:
+                null_window += 1
             else:
-                tmp = tmp + rewards[y]
-        array[x] = tmp / (2 * window + 1)
-    for x in range(0, T):
-        rewards[x] = array[x]
-    return rewards
+                sum = sum + rewards[y]
+            y += 1
+        array[x] = sum / (2 * tmp_window + 1 - null_window)
+    return array
 
 
-name = 'gen_8x_long_with_low.txt'
+name = 'fac_8x_16_128_low.txt'
 f = open("errors_files/"+name, "r")
 data_array = [[], [], []]
 
