@@ -1,41 +1,32 @@
-scale: 4x, sizes: 16->64,    dataset: faces_1000,   model: faces;    psnr: 24.20  ->  -0.247%   -1.37%
-                                                    model: general;  psnr: 24.26
-                             dataset: general_1000, model: faces;    psnr: 21.87  ->   0.367%    1.86%
-                                                    model: general;  psnr: 21.79
-           sizes: 32->128,   dataset: faces_1000,   model: faces;    psnr: 27.35  ->  -0.037%   -0.23%
-                                                    model: general;  psnr: 27.36
-                             dataset: general_1000, model: faces;    psnr: 23.85  ->   0.463%    2.57%
-                                                    model: general;  psnr: 23.74
-           sizes: 64->256,   dataset: faces_1000,   model: faces;    psnr: 30.66  ->   0.426%    3.04%
-                                                    model: general;  psnr: 30.53
-                             dataset: general_1000, model: faces;    psnr: 26.00  ->   0.386%    2.33%
-                                                    model: general;  psnr: 25.90
-           sizes: 128->512,  dataset: faces_1000,   model: faces;    psnr: 33.35  ->   0.512%    3.99%
-                                                    model: general;  psnr: 33.18
-                             dataset: general_1000, model: faces;    psnr: 28.29  ->   0.319%    2.09%
-                                                    model: general;  psnr: 28.20
-scale: 8x, sizes: 16->128,   dataset: faces_1000,   model: faces;    psnr: 23.71  ->  -0.042%   -0.23%
-                                                    model: general;  psnr: 23.72
-                             dataset: general_1000, model: faces;    psnr: 20.82  ->   0.192%    0.93%
-                                                    model: general;  psnr: 20.78
-           sizes: 32->256,   dataset: faces_1000,   model: faces;    psnr: 26.78  ->   0.075%    0.46%
-                                                    model: general;  psnr: 26.76
-                             dataset: general_1000, model: faces;    psnr: 22.86  ->   0.175%    0.93%
-                                                    model: general;  psnr: 22.82
-           sizes: 64->512,   dataset: faces_1000,   model: faces;    psnr: 29.95  ->   0.470%    3.28%
-                                                    model: general;  psnr: 29.81
-                             dataset: general_1000, model: faces;    psnr: 25.04  ->   0.160%    0.93%
-                                                    model: general;  psnr: 25.00
+scale: 4x, sizes: 16->64,    dataset: faces_1000,   model: faces;    psnr: 24.20  ->  -0.247%   -1.37%   psnr:
+                                                    model: general;  psnr: 24.26                         psnr:
+                             dataset: general_1000, model: faces;    psnr: 21.87  ->   0.367%    1.86%   psnr:
+                                                    model: general;  psnr: 21.79                         psnr:
+           sizes: 32->128,   dataset: faces_1000,   model: faces;    psnr: 27.35  ->  -0.037%   -0.23%   psnr:
+                                                    model: general;  psnr: 27.36                         psnr:
+                             dataset: general_1000, model: faces;    psnr: 23.85  ->   0.463%    2.57%   psnr:
+                                                    model: general;  psnr: 23.74                         psnr:
+           sizes: 64->256,   dataset: faces_1000,   model: faces;    psnr: 30.66  ->   0.426%    3.04%   psnr:
+                                                    model: general;  psnr: 30.53                         psnr: 30.62
+                             dataset: general_1000, model: faces;    psnr: 26.00  ->   0.386%    2.33%   psnr:
+                                                    model: general;  psnr: 25.90                         psnr: 25.99
+           sizes: 128->512,  dataset: faces_1000,   model: faces;    psnr: 33.35  ->   0.512%    3.99%   psnr:
+                                                    model: general;  psnr: 33.18                         psnr:
+                             dataset: general_1000, model: faces;    psnr: 28.29  ->   0.319%    2.09%   psnr:
+                                                    model: general;  psnr: 28.20                         psnr:
 
-testing:   sizes: 16->128,   dataset: faces_1000,   model: faces;    psnr: 23.73  ->   1.977%   11.17%
-                                                    model: general;  psnr: 23.27
-                             dataset: general_1000, model: faces;    psnr: 20.75  ->   1.220%    5.93%
-                                                    model: general;  psnr: 20.50
-           sizes: 32->256,   dataset: faces_1000,   model: faces;    psnr:        ->
-                                                    model: general;  psnr: 26.75
-                             dataset: general_1000, model: faces;    psnr:        ->
-                                                    model: general;  psnr: 22.87
-           sizes: 64->512,   dataset: faces_1000,   model: faces;    psnr:        ->
-                                                    model: general;  psnr: 29.96
-                             dataset: general_1000, model: faces;    psnr:        ->
-                                                    model: general;  psnr: 25.16
+scale: 8x, sizes: 16->128,   dataset: faces_1000,   model: faces;    psnr: 23.71  ->  -0.042%   -0.23%   psnr: 23.73  ->   1.977%   11.17%
+                                                    model: general;  psnr: 23.72                         psnr: 23.27
+                             dataset: general_1000, model: faces;    psnr: 20.82  ->   0.192%    0.93%   psnr: 20.75  ->   1.220%    5.93%
+                                                    model: general;  psnr: 20.78                         psnr: 20.50
+           sizes: 32->256,   dataset: faces_1000,   model: faces;    psnr: 26.78  ->   0.075%    0.46%   psnr: 26.83  ->   0.941%    5.93%
+                                                    model: general;  psnr: 26.76                         psnr: 26.58
+                             dataset: general_1000, model: faces;    psnr: 22.86  ->   0.175%    0.93%   psnr: 22.85  ->   0.616%    3.28%
+                                                    model: general;  psnr: 22.82                         psnr: 22.71
+           sizes: 64->512,   dataset: faces_1000,   model: faces;    psnr: 29.95  ->   0.470%    3.28%   psnr: 30.04  ->   0.670%    4.71%
+                                                    model: general;  psnr: 29.81                         psnr: 29.84
+                             dataset: general_1000, model: faces;    psnr: 25.04  ->   0.160%    0.93%   psnr: 25.08  ->   0.160%    0.93%
+                                                    model: general;  psnr: 25.00                         psnr: 25.04
+
+Il dataset delle facce ha un bias nel psnr medio per cui le facce hanno un psnr maggiore
+Il modello delle facce è quindi stato trainato su un dataset migliore e quindi performa generalmente meglio del modello general

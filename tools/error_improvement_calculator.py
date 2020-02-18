@@ -22,7 +22,7 @@ def moving_average(rewards, T):
     return array
 
 
-name = 'gen_8x_32_256.txt'
+name = 'fac_4x_16_64.txt'
 f = open("errors_files/"+name, "r")
 data_array = [[], [], []]
 
