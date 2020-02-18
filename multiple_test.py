@@ -7,8 +7,10 @@ checkpoint = 'D:\\Documents\\Workspace\\ADL_proSR\\data\\checkpoints\\'
 target = 'D:\\Documents\\Workspace\\ADL_proSR\\data\\datasets\\open_image\\'
 output = 'D:\\Documents\\Workspace\\ADL_proSR\\output\\open_image\\automated\\'
 
+checkpoint_exist = False
 text = ''
-tmp_psnr = 0
+previous_psnr_old_model = 0
+previous_psnr_tl_model = 0
 scales = [4, 8]
 prev_scale = 0
 prev_couple = []
@@ -25,22 +27,69 @@ for scale in scales:
         for dataset in datasets:
             models = ['faces', 'general']
             for model in models:
+                # test old
                 string = 'python '+path+'test.py '
                 string += '--input '+input+dataset+'_'+str(couple[0])+' '
-                string += '--checkpoint '+checkpoint+model+'_'+str(scale)+'x.pth'+' '
                 string += '--target '+target+dataset+'_'+str(couple[1])+' '
-                string += '--scale '+str(scale)+' '
-                string += '--output-dir '+output+str(scale)+'x_'+str(couple[0])+'-'+str(couple[1])+'\\'+'ds_'+dataset.split('_')[0]+'-model_'+model
+                string += '--checkpoint '+checkpoint+model+'_'+str(scale)+'x_net_G.pth'+' '
+                string += '--output-dir '+output+str(scale)+'x_'+str(couple[0])+'-'+str(couple[1])+'\\'+'ds_'+dataset.split('_')[0]+'-model_'+model+' '
+                string += '--scale '+str(scale)
                 print(string)
                 p1 = subprocess.check_output(string)
                 p1_out = p1.decode('utf-8').split('\n')[-2]
-                print(p1_out)
+                psnr_old_model = float(p1_out.split(' ')[3])
 
-                if model == models[1]:
-                    perc = float(tmp_psnr)/float(p1_out.split(' ')[3])*100.0 - 100.0
-                    text += '  ->  '+str(round(perc, 3))+'%\n'
+                # test new
+                if os.path.exists(checkpoint+model+'_'+str(scale)+'x_'+str(couple[0])+'_'+str(couple[1])+'_net_G.pth'):
+                    checkpoint_exist = True
                 else:
-                    text += '\n'
+                    checkpoint_exist = False
+
+                if checkpoint_exist:
+                    string = 'python '+path+'test.py '
+                    string += '--input '+input+dataset+'_'+str(couple[0])+' '
+                    string += '--target '+target+dataset+'_'+str(couple[1])+' '
+                    string += '--checkpoint '+checkpoint+model+'_'+str(scale)+'x_'+str(couple[0])+'_'+str(couple[1])+'_net_G.pth'+' '
+                    string += '--output-dir '+output+str(scale)+'x_'+str(couple[0])+'-'+str(couple[1])+'\\'+'alt-ds_'+dataset.split('_')[0]+'-model_'+model+' '
+                    string += '--scale '+str(scale)
+                    print(string)
+                    p1 = subprocess.check_output(string)
+                    p1_out = p1.decode('utf-8').split('\n')[-2]
+                    psnr_tl_model = float(p1_out.split(' ')[3])
+
+                # first line
+                if prev_scale == 0:
+                    text += ''
+
+                # general (it completes faces)
+                elif model == models[1]:
+                    text += 'psnr: {:5.2f}'.format(previous_psnr_old_model)
+                    # add first perc
+                    perc = previous_psnr_old_model / psnr_old_model * 100.0 - 100.0
+                    text += '  ->  {:6.3f}%'.format(perc)
+                    # add second perc
+                    perc = 10 ** ((previous_psnr_old_model-psnr_old_model)/10) * 100.0 - 100.0
+                    text += '   {:5.2f}%   '.format(perc)
+
+                    if checkpoint_exist and prev_checkpoint_exist:
+                        text += 'psnr: {:5.2f}'.format(previous_psnr_tl_model)
+                        # add first perc
+                        perc = previous_psnr_tl_model / psnr_tl_model * 100.0 - 100.0
+                        text += '  ->  {:6.3f}%'.format(perc)
+                        # add second perc
+                        perc = 10 ** ((previous_psnr_tl_model-psnr_tl_model)/10) * 100.0 - 100.0
+                        text += '   {:5.2f}%\n'.format(perc)
+                    else:
+                        text += '\n'
+
+                # faces (it completes general)
+                else:
+                    text += 'psnr: {:5.2f}'.format(previous_psnr_old_model)
+                    text += ' '*25
+                    if prev_checkpoint_exist:
+                        text += 'psnr: {:5.2f}\n'.format(previous_psnr_tl_model)
+                    else:
+                        text += '\n'
 
                 if scale != prev_scale:
                     text += 'scale: {:3s} '.format(str(scale)+'x,')
@@ -57,11 +106,20 @@ for scale in scales:
                 else:
                     text += ' '*23
 
-                text += 'model: {:8s}  psnr: '.format(model+';')+p1_out.split(' ')[3]
-                tmp_psnr = p1_out.split(' ')[3]
+                text += 'model: {:8s}  '.format(model + ';')
+
+                previous_psnr_old_model = psnr_old_model
+                if checkpoint_exist:
+                    previous_psnr_tl_model = psnr_tl_model
                 prev_scale = scale
                 prev_couple = couple
                 prev_dataset = dataset
-                print()
-                print(text)
+                prev_checkpoint_exist = checkpoint_exist
+        print(text)
+text += 'psnr: {:5.2f}'.format(previous_psnr_old_model)
+text += ' ' * 25
+if checkpoint_exist:
+    text += 'psnr: {:5.2f}\n'.format(previous_psnr_tl_model)
+print()
+print(text)
 
