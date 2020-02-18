@@ -20,18 +20,20 @@ prosr_params = \
         'train': {
             'dataset': {
                 'path': {
-                    'source':'data/datasets/open_image/general_400_32',
-                    'target':'data/datasets/open_image/general_400_256'
+                    'source':'data/datasets/open_image/general_400_64',
+                    'target':'data/datasets/open_image/general_400_512'
                     # 'target':'data/datasets/Ensemble/**'
                 },
                 'downscale':False,
-                'mean': [0.4488, 0.4371, 0.4040],  # mean value to extract from the (0, 1) image values
+                # gen_400_512 = [0.47154888, 0.44466099, 0.39731162]
+                # gen_100_512 = [0.47411609, 0.44647630, 0.41220913]
+                'mean': [0.47154888, 0.44466099, 0.39731162],  # mean value to extract from the (0, 1) image values
                 'stddev': [0.0039215, 0.0039215, 0.0039215]  # multiply the image value by this factor, resulting value range of image [-127.5, 127.5]
             },
-            'epochs': 275,  #
+            'epochs': 250,  #
             'batch_size': 16,
             'growing_steps': [0.12, 0.25, 0.45, 0.6, 1.00],
-            'lr_schedule_patience': 2,  # default: 30
+            'lr_schedule_patience': 30,  # default: 30
             'lr': 0.0001,
             'lr_decay': 0.5,
             'smallest_lr': 1e-5,
@@ -39,8 +41,8 @@ prosr_params = \
             ############# output settings ##############
             'io': {
                 'save_model_freq':5,
-                'eval_epoch_freq': 1,
-                'print_errors_freq': 40
+                'eval_epoch_freq': 5,
+                'print_errors_freq': 400
             },
         },
         'G': {
@@ -61,15 +63,15 @@ prosr_params = \
             'res_factor': 0.2,  # scale residual
         },
         'test': {
-            'fast_validation':-1, #-1 full validation, 0 no validation, x: max files validation
+            'fast_validation':100, #-1 full validation, 0 no validation, x: max files validation
             'dataset': {
                 'path': {
                     'source':'',
-                    'target':'data/datasets/Set14'
+                    'target':'data/datasets/open_image/general_100_512'
 
                 },
                 'downscale':False,
-
+                'mean': [0.47411609, 0.44647630, 0.41220913],  # mean value to extract from the (0, 1) image values
                 'stddev': [0.0039215, 0.0039215, 0.0039215]  # multiply the image value by this factor, resulting value range of image [-127.5, 127.5]
             },
         },
