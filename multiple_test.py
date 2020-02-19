@@ -22,10 +22,13 @@ for scale in scales:
     for size in sizes:
         if size * scale in sizes:
             couples += [[size, size * scale]]
+
     for couple in couples:
         datasets = ['faces_1000', 'general_1000']
+
         for dataset in datasets:
             models = ['faces', 'general']
+
             for model in models:
                 # test old
                 string = 'python '+path+'test.py '
@@ -115,7 +118,7 @@ for scale in scales:
                 prev_couple = couple
                 prev_dataset = dataset
                 prev_checkpoint_exist = checkpoint_exist
-        print(text)
+
 text += 'psnr: {:5.2f}'.format(previous_psnr_old_model)
 text += ' ' * 25
 if checkpoint_exist:
