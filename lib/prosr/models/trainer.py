@@ -63,6 +63,7 @@ class SimultaneousMultiscaleTrainer(object):
                 self.load_network(self.net_G, 'G', resume_from)
                 self.load_optimizer(self.optimizer_G, 'G', resume_from)
                 info('Set lr = %e' % self.lr)
+                self.progress = self.start_epoch / self.opt.train.epochs
             except Exception as e:
                 warn("Error loading pretrained network. " + str(e))
                 exit(0)
@@ -243,8 +244,10 @@ class SimultaneousMultiscaleTrainer(object):
 
         # Load more params
         self.start_epoch = data['epoch']
+        self.progress = self.start_epoch / self.opt.train.epochs
         self.lr = data['lr']
 
+        self.update_learning_rate()
         info('loaded optimizer state from ' + save_path)
 
     def set_learning_rate(self, lr, optimizer):

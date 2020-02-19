@@ -123,7 +123,12 @@ def mkdir(path):
 def print_current_errors(epoch, i, errors, t, log_name=None):
     message = '(epoch: %d, iters: %d, time: %.3f) ' % (epoch, i, t)
     for k, v in errors.items():
-        message += '%s: %.3f ' % (k, v)
+        # v is sometimes a list TODO: fix error at the source
+        if isinstance(v, list):
+            err = np.add(err, v).sum() / len(v)
+        else:
+            err = v
+        message += '%s: %.3f ' % (k, err)
 
     print(message)
     if log_name is not None:
