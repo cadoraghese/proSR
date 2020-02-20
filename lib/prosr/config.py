@@ -20,14 +20,16 @@ prosr_params = \
         'train': {
             'dataset': {
                 'path': {
-                    'source':'data/datasets/open_image/general_400_64',
-                    'target':'data/datasets/open_image/general_400_512'
+                    'source':'',
+                    'target':'data/datasets/open_image/faces_400_512'
                     # 'target':'data/datasets/Ensemble/**'
                 },
                 'downscale':False,
                 # gen_400_512 = [0.47154888, 0.44466099, 0.39731162]
                 # gen_100_512 = [0.47411609, 0.44647630, 0.41220913]
-                'mean': [0.47154888, 0.44466099, 0.39731162],  # mean value to extract from the (0, 1) image values
+                # fac_400_512 = [0.51115421, 0.40594396, 0.36522219]
+                # fac_100_512 = [0.51545801, 0.41302043, 0.36316105]
+                'mean': [0.51115421, 0.40594396, 0.36522219],  # mean value to extract from the (0, 1) image values
                 'stddev': [0.0039215, 0.0039215, 0.0039215]  # multiply the image value by this factor, resulting value range of image [-127.5, 127.5]
             },
             'epochs': 250,  #
@@ -63,15 +65,15 @@ prosr_params = \
             'res_factor': 0.2,  # scale residual
         },
         'test': {
-            'fast_validation':100, #-1 full validation, 0 no validation, x: max files validation
+            'fast_validation':50, #-1 full validation, 0 no validation, x: max files validation
             'dataset': {
                 'path': {
                     'source':'',
-                    'target':'data/datasets/open_image/general_100_512'
+                    'target':'data/datasets/open_image/faces_100_512'
 
                 },
                 'downscale':False,
-                'mean': [0.47411609, 0.44647630, 0.41220913],  # mean value to extract from the (0, 1) image values
+                'mean': [0.51545801, 0.41302043, 0.36522219],  # mean value to extract from the (0, 1) image values
                 'stddev': [0.0039215, 0.0039215, 0.0039215]  # multiply the image value by this factor, resulting value range of image [-127.5, 127.5]
             },
         },
