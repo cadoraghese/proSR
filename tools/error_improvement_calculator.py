@@ -22,17 +22,29 @@ def moving_average(rewards, T):
     return array
 
 
-name = 'fac_4x_16_64.txt'
+name = 'faces_4x.txt'
 f = open("errors_files/"+name, "r")
 data_array = [[], [], []]
 
+scale = 2
+
+if scale == 2:
+    field = 7
+elif scale == 4:
+    field = 9
+else:
+    field = 11
+
 for line in f:
-    if len(line.split(' ')) >= 8 and float(line.split(' ')[7]) != 0.0:
-        data_array[0] += [float(line.split(' ')[7])]
-    if len(line.split(' ')) >= 10 and float(line.split(' ')[9]) != 0.0:
-        data_array[1] += [float(line.split(' ')[9])]
-    if len(line.split(' ')) >= 12 and float(line.split(' ')[11]) != 0.0:
-        data_array[2] += [float(line.split(' ')[11])]
+    if len(line.split(' ')) >= field+1 and float(line.split(' ')[field]) != 0.0:
+        data_array[0] += [float(line.split(' ')[field])]
+    # if len(line.split(' ')) >= 8 and float(line.split(' ')[7]) != 0.0:
+    #     data_array[0] += [float(line.split(' ')[7])]
+    # if len(line.split(' ')) >= 10 and float(line.split(' ')[9]) != 0.0:
+    #     data_array[1] += [float(line.split(' ')[9])]
+    # if len(line.split(' ')) >= 12 and float(line.split(' ')[11]) != 0.0:
+    #     data_array[2] += [float(line.split(' ')[11])]
+
 
 plt.title(name)
 for data in data_array:

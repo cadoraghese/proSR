@@ -5,7 +5,7 @@ path = 'D:\\Documents\\Workspace\\ADL_proSR\\'
 input = 'D:\\Documents\\Workspace\\ADL_proSR\\data\\datasets\\open_image\\'
 checkpoint = 'D:\\Documents\\Workspace\\ADL_proSR\\data\\checkpoints\\'
 target = 'D:\\Documents\\Workspace\\ADL_proSR\\data\\datasets\\open_image\\'
-output = 'D:\\Documents\\Workspace\\ADL_proSR\\output\\open_image\\automated\\'
+output = 'D:\\Documents\\Workspace\\ADL_proSR\\output\\open_image\\tmp\\automated\\'
 
 checkpoint_exist = False
 text = ''
@@ -28,6 +28,7 @@ for scale in scales:
 
         for dataset in datasets:
             models = ['faces', 'general']
+            models = ['faces_test_1', 'general_test_1']
 
             for model in models:
                 # test old
