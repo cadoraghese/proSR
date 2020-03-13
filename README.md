@@ -1,4 +1,4 @@
-Davide Spinelli edit for the ADL course
+Davide Spinelli's fork for the ADL course
 
 # ProSR
 
